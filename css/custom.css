@@ -12,10 +12,11 @@
     color: #d9534f!important;
     font-weight: 700;
 }
-/*
+
 thead {
     color: white;
 }
+/*
 .card {
     position: relative;
 }
@@ -38,17 +39,19 @@ thead {
 }
 
 
-h1 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    font-size: 1.6rem;
-}
+
 .card-title {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
     font-size: 1.2rem;
 }
 */
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+}
+
 .btn {
     width:100%;
 }
