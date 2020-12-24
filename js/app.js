@@ -28,11 +28,12 @@ const getCocktails = e => {
         // Query by the name of the drink
         cocktail.getDrinksByName(searchTerm)
             .then(cocktails => {
-                if(cocktails.data.drinks === null){
+                let drinksList = cocktails.data.drinks;
+                if(drinksList === null){
                     // no results to show
                     ui.printMessage(`There\'re no results for ${searchTerm}, please try different term`, 'danger'); 
                 }else{
-                    console.log(cocktails);
+                    ui.displayDrinksWithIngredients(drinksList);
                 }
             }).catch(err => console.log(err));
     }
