@@ -3,6 +3,33 @@ class UI{
 
     }
 
+    // displaying drinks without ingredients
+    displayDrink(drinks){
+        // show the results
+        const resultsWrapper = document.querySelector('.results-wrapper');
+        resultsWrapper.style.display = 'block';
+
+        // insert the results
+        const resultsDiv = resultsWrapper.querySelector('#results');
+
+        // loop through drinks
+        drinks.forEach(drink => {
+            resultsDiv.innerHTML += `
+                <div class="col-md-4">
+                    <div class="card my-3">
+                        <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
+                        <div class="card-body">
+                            <h2 class="card-title text-center">${drink.strDrink}</h2>
+                            <a class="btn btn-success" href="#" data-toggle="modal" data-id="${drink.isDrink}">Get Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+
+
     // displaying drinks with ingredients
     displayDrinksWithIngredients(drinks){
         // show the results
@@ -11,7 +38,6 @@ class UI{
 
         // insert the results
         const resultsDiv = resultsWrapper.querySelector('#results');
-        resultsDiv.innerHTML = '';
         drinks.forEach(drink => {
             resultsDiv.innerHTML += `
                 <div class="col-md-6">
@@ -82,5 +108,14 @@ class UI{
         setTimeout(()=>{
             document.querySelector('.alert').remove();
         }, 2500);
+    }
+
+
+    // clear previous results 
+    clearResults() {
+        const resultsDiv = document.querySelector('#results');
+        resultsDiv.innerHTML = '';
+        const resultsWrapper = document.querySelector('.results-wrapper');
+        resultsWrapper.style.display = 'none';
     }
 }
