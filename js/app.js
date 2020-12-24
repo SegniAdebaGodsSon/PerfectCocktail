@@ -7,8 +7,14 @@ const ui = new UI(),
 const eventListners = () => {
     // add event listner when the form is submitted
     const searchForm = document.querySelector('#search-form');
-    if(searchForm){
+    if(searchForm){  // check because not all the pages have search form id
         searchForm.addEventListener('submit', getCocktails);        // e is automatically passed to getCocktails function
+    }
+
+    // the results div listner
+    const resultsDiv = document.querySelector('#results');
+    if(resultsDiv){
+        resultsDiv.addEventListener('click', resultsDelegation);
     }
     
 }
@@ -60,6 +66,18 @@ const getCocktails = e => {
                 console.log(err)
                 ui.printMessage(`There\'re no results for ${searchTerm}, please try different term`, 'danger'); 
             });
+    }
+}
+
+// event delegation for the #result are 
+const resultsDelegation = e =>{
+    e.preventDefault();
+    if(e.target.classList.contains('get-recipe')){
+        cocktail.getSingleRecipe(e.target.dataset.id)   // can also be written as e.target.getAttribute('id')
+            .then(recipe => {
+                console.log(recipe);
+            }).catch(err => console.log(err));
+          
     }
 }
 

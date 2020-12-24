@@ -20,7 +20,7 @@ class UI{
                         <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}</h2>
-                            <a class="btn btn-success" href="#" data-toggle="modal" data-id="${drink.isDrink}">Get Recipe</a>
+                            <a class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
                         </div>
                     </div>
                 </div>
