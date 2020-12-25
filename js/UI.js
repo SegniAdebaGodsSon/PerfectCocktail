@@ -91,6 +91,9 @@ class UI{
 
     // display single recipe
     displaySingleRecipe(recipe){
+        //clear the modal to make it empty if there's been another one loaded before the current one
+        this.clearModal();
+
         // get variables
         const modalTitle = document.querySelector('.modal-title'),
             modalDescription = document.querySelector('.modal-body .description-text'),
@@ -136,5 +139,16 @@ class UI{
         resultsDiv.innerHTML = '';
         const resultsWrapper = document.querySelector('.results-wrapper');
         resultsWrapper.style.display = 'none';
+    }
+
+    clearModal() {
+        const modalTitle = document.querySelector('.modal-title'),
+            modalDescription = document.querySelector('.modal-body .description-text'),
+            modalIngredientList = document.querySelector('.modal-body .ingredient-list .list-group');
+
+        modalTitle.textContent = '';
+        modalDescription.textContent = '';
+        modalIngredientList.innerHTML = '';
+
     }
 }
