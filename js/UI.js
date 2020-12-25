@@ -91,8 +91,6 @@ class UI{
 
     // display single recipe
     displaySingleRecipe(recipe){
-        //clear the modal to make it empty if there's been another one loaded before the current one
-        this.clearModal();
 
         // get variables
         const modalTitle = document.querySelector('.modal-title'),
@@ -149,6 +147,5 @@ class UI{
         modalTitle.textContent = '';
         modalDescription.textContent = '';
         modalIngredientList.innerHTML = '';
-
-    }
+    }   
 }

@@ -73,6 +73,8 @@ const getCocktails = e => {
 const resultsDelegation = e =>{
     e.preventDefault();
     if(e.target.classList.contains('get-recipe')){
+        //clear the modal to make it empty if there's been another one loaded before the current one
+        ui.clearModal();
         cocktail.getSingleRecipe(e.target.dataset.id)   // can also be written as e.target.getAttribute('id')
             .then(recipe => {
                 // display a single recipe into a modal
