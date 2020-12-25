@@ -3,6 +3,21 @@ class UI{
 
     }
 
+    // display the cocktail drinks' categories in the selection
+    displayCategories(categories){
+        const firstOption = document.createElement('option');
+        firstOption.textContent = '-- Select --';
+        firstOption.value = "";
+        document.querySelector('#search').appendChild(firstOption);   // don't worry about calling the other 'search' id elements, this is only called if we're in the categories page
+        categories.forEach(category => {
+            let option = document.createElement('option');
+            option.textContent = category.strCategory;
+            option.value = category.strCategory.replace(/\s/g, '_'); // this can work as well => category.strCategory.split(' ').join('_')
+            console.log(option)
+            document.querySelector('#search').appendChild(option);
+        });      
+    }
+
     // displaying drinks without ingredients
     displayDrink(drinks){
         // show the results

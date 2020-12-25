@@ -5,6 +5,8 @@ const ui = new UI(),
 
 // create the event listeners
 const eventListners = () => {
+    // document ready
+    document.addEventListener('DOMContentLoaded', documentReady);
     // add event listner when the form is submitted
     const searchForm = document.querySelector('#search-form');
     if(searchForm){  // check because not all the pages have search form id
@@ -82,6 +84,18 @@ const resultsDelegation = e =>{
 
             }).catch(err => console.log(err));
           
+    }
+}
+
+// document ready
+const documentReady = e =>{
+    // get a refenrence to the category selection
+    const searchCategory = document.querySelector('.search-category');
+    if(searchCategory){
+        cocktail.getCategories()
+            .then(categories => {
+                ui.displayCategories(categories.data.drinks);
+            }).catch(err => console.log(err));
     }
 }
 

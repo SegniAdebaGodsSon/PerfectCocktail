@@ -26,4 +26,12 @@ class CocktailAPI{
 
         return {data};
     }
+
+    // get the categories of the cocktails/drinks
+    async getCategories(){
+        const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list');
+        const data = await response.json();
+
+        return {data};
+    }
 }
