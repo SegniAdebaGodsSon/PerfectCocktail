@@ -75,7 +75,9 @@ const resultsDelegation = e =>{
     if(e.target.classList.contains('get-recipe')){
         cocktail.getSingleRecipe(e.target.dataset.id)   // can also be written as e.target.getAttribute('id')
             .then(recipe => {
-                console.log(recipe);
+                // display a single recipe into a modal
+                ui.displaySingleRecipe(recipe.data.drinks[0])
+
             }).catch(err => console.log(err));
           
     }

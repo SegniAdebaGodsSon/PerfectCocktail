@@ -20,7 +20,7 @@ class UI{
                         <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}</h2>
-                            <a class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
+                            <a data-target="#recipe" class="btn btn-success get-recipe" href="#" data-toggle="modal" data-id="${drink.idDrink}">Get Recipe</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ class UI{
             const ingredientMeasure = {};
             if(drink[`strIngredient${i}`]){
                 ingredientMeasure.ingredient = drink[`strIngredient${i}`]
-                ingredientMeasure.measure = drink[`strMeasure${i}`];
+                ingredientMeasure.measure = drink[`strMeasure${i}`] === null ? '🤷🏾‍♂️👍🏽': drink[`strMeasure${i}`];
                 ingredients.push(ingredientMeasure);
             }
             
@@ -88,6 +88,25 @@ class UI{
         return ingredientsTemplate;
     }
 
+
+    // display single recipe
+    displaySingleRecipe(recipe){
+        // get variables
+        const modalTitle = document.querySelector('.modal-title'),
+            modalDescription = document.querySelector('.modal-body .description-text'),
+            modalIngredientList = document.querySelector('.modal-body .ingredient-list .list-group');
+
+        // set values of the empty modals
+        modalTitle.textContent = recipe.strDrink;
+        modalDescription.textContent = recipe.strInstructions; 
+
+        // get list of ingredients for the current drink
+        const ingredientsList = this.displayIngredients(recipe);
+        
+        // set the html returned from the above method to the empty ul's innerHTML
+        modalIngredientList.innerHTML = ingredientsList;
+
+    }
 
     // display a custom message
     printMessage(message, className){
