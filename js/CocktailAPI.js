@@ -42,4 +42,12 @@ class CocktailAPI{
 
         return {data};
     }
+
+    // get drinks by alcoholic content
+    async getDrinksByAlcohol(alcoholContent){
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${alcoholContent}`);
+        const data = await response.json();
+
+        return {data};
+    }
 }

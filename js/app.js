@@ -47,7 +47,9 @@ const getCocktails = e => {
             case 'category':
                 serverResponse = cocktail.getDrinksByCategory(searchTerm);
                 break;
-
+            case 'alcohol':
+                serverResponse = cocktail.getDrinksByAlcohol(searchTerm);    
+                break;
         }
 
         // Query by the name of the drink
