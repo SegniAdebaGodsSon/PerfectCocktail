@@ -1,7 +1,7 @@
 // instanciate classes
 const ui = new UI(), 
     cocktail = new CocktailAPI();
-
+    cocktailDB = new CocktailDB();
 
 // create the event listeners
 const eventListners = () => {
@@ -90,7 +90,7 @@ const resultsDelegation = e =>{
             }).catch(err => console.log(err)); 
     }
 
-    // when facorite button is clicked
+    // when favorite button is clicked
     if(e.target.classList.contains('favorite-btn')){
         if(e.target.classList.contains('is-favorite')){
             // remove the class
@@ -100,6 +100,17 @@ const resultsDelegation = e =>{
             // add the class
             e.target.classList.add('is-favorite');
             e.target.textContent = '-';
+
+            // Get info
+            const cardBody = e.target.parentElement;
+            const drinkInfo = {
+                id: e.target.dataset.id,
+                name: cardBody.querySelector('.card-title').textContent,
+                image: cardBody.querySelector('.card-img-top').src
+            }
+
+            // Add into the storage
+            cocktailDB.saveIntoDB(drinkInfo);
         }
     }
 }
