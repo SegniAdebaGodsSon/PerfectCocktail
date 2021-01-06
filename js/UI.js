@@ -13,7 +13,6 @@ class UI{
             let option = document.createElement('option');
             option.textContent = category.strCategory;
             option.value = category.strCategory.replace(/\s/g, '_'); // this can work as well => category.strCategory.split(' ').join('_')
-            console.log(option)
             document.querySelector('#search').appendChild(option);
         });      
     }
@@ -32,6 +31,7 @@ class UI{
             resultsDiv.innerHTML += `
                 <div class="col-md-4">
                     <div class="card my-3">
+                        <button type="button" data-id=${drink.idDrink} class="favorite-btn btn btn-outline-info">+</button>
                         <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}</h2>
@@ -57,9 +57,8 @@ class UI{
             resultsDiv.innerHTML += `
                 <div class="col-md-6">
                     <div class="card my-3">
-
-                        <button type="button" data-id=${drink.isDrink} class="favorite-btn btn btn-outline-info">+</button>
-                        <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
+                    <button type="button" data-id=${drink.idDrink} class="favorite-btn btn btn-outline-info">+</button>
+                    <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}"></img>
                         <div class="card-body">
                             <h2 class="card-title text-center">${drink.strDrink}</h2>
                             <p class="card-text font-weight-bold">Instructions:</p>

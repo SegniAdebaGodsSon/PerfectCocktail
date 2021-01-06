@@ -87,8 +87,20 @@ const resultsDelegation = e =>{
                 // display a single recipe into a modal
                 ui.displaySingleRecipe(recipe.data.drinks[0])
 
-            }).catch(err => console.log(err));
-          
+            }).catch(err => console.log(err)); 
+    }
+
+    // when facorite button is clicked
+    if(e.target.classList.contains('favorite-btn')){
+        if(e.target.classList.contains('is-favorite')){
+            // remove the class
+            e.target.classList.remove('is-favorite');
+            e.target.textContent = '+';
+        }else{
+            // add the class
+            e.target.classList.add('is-favorite');
+            e.target.textContent = '-';
+        }
     }
 }
 
