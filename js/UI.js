@@ -188,4 +188,8 @@ class UI{
             favoritesTable.appendChild(tr);
         });
     }
+
+    removeFavorite(element){
+        element.remove();
+    }
 }

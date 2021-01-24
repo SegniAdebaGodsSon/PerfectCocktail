@@ -131,6 +131,28 @@ const documentReady = e =>{
         // Get the favorites from storage and display them
         const drinks = cocktailDB.getFromDB();
         ui.displayFavorites(drinks);
+
+        // When view or delete are clicked
+        
+        favoritesTable.addEventListener('click', e =>{
+            e.preventDefault();
+            // delegation
+            // VIEW
+            if(e.target.classList.contains('get-recipe')){
+                ui.clearModal();
+                cocktail.getSingleRecipe(e.target.dataset.id) 
+                    .then(recipe => {
+                        ui.displaySingleRecipe(recipe.data.drinks[0])
+                    }).catch(err => console.log(err)); 
+            }
+
+            // delegation 
+            // DELETE
+            if(e.target.classList.contains('remove-recipe')){
+                // Remove form the DOM
+                ui.removeFavorite(e.target.parentElement.parentElement)
+            }
+        })
     }
 }
 
