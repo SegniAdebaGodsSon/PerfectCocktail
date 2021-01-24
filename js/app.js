@@ -52,7 +52,6 @@ const getCocktails = e => {
                 break;
         }
 
-        // Query by the name of the drink
         serverResponse
             .then(cocktails => {
                 console.log(cocktails)
@@ -124,6 +123,14 @@ const documentReady = e =>{
             .then(categories => {
                 ui.displayCategories(categories.data.drinks);
             }).catch(err => console.log(err));
+    }
+
+    // when favorites page is opened
+    const favoritesTable = document.querySelector('#favorites');
+    if(favoritesTable){
+        // Get the favorites from storage and display them
+        const drinks = cocktailDB.getFromDB();
+        ui.displayFavorites(drinks);
     }
 }
 

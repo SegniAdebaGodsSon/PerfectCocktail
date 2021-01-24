@@ -162,4 +162,30 @@ class UI{
         modalDescription.textContent = '';
         modalIngredientList.innerHTML = '';
     }   
+
+    // Displays favorites from an array passed
+    displayFavorites(favorites){
+        const favoritesTable = document.querySelector('#favorites tbody');
+        favorites.forEach(drink => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <img src="${drink.image}/preview" alt="${drink.name}" width=100>
+                </td>
+                <td>${drink.name}</td>
+                <td>
+                    <a href="#" data-toggle="modal" data-target="#recipe" data-id="${drink.id}" class="btn btn-success get-recipe">
+                        Veiw
+                    </a>
+                </td>
+                <td>
+                <a href="#" data-id="${drink.id}" class="btn btn-danger remove-recipe">
+                    Remove
+                </a>
+            </td>
+            `;
+
+            favoritesTable.appendChild(tr);
+        });
+    }
 }
