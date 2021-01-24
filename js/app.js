@@ -95,6 +95,9 @@ const resultsDelegation = e =>{
             // remove the class
             e.target.classList.remove('is-favorite');
             e.target.textContent = '+';
+
+            // Remove from the Local Storage
+            cocktailDB.removeFromDB(e.target.dataset.id);
         }else{
             // add the class
             e.target.classList.add('is-favorite');
@@ -116,7 +119,11 @@ const resultsDelegation = e =>{
 
 // document ready
 const documentReady = e =>{
-    // get a refenrence to the category selection
+    // Display on load the favorites from the storage
+    ui.isFavorite();    // I don't get the use of this tbh
+
+
+    // get a reference to the category selection
     const searchCategory = document.querySelector('.search-category');
     if(searchCategory){
         cocktail.getCategories()
