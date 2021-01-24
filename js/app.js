@@ -137,6 +137,7 @@ const documentReady = e =>{
         favoritesTable.addEventListener('click', e =>{
             e.preventDefault();
             // delegation
+            
             // VIEW
             if(e.target.classList.contains('get-recipe')){
                 ui.clearModal();
@@ -146,11 +147,13 @@ const documentReady = e =>{
                     }).catch(err => console.log(err)); 
             }
 
-            // delegation 
             // DELETE
             if(e.target.classList.contains('remove-recipe')){
                 // Remove form the DOM
                 ui.removeFavorite(e.target.parentElement.parentElement)
+
+                // Remove from the Local Storage
+                cocktailDB.removeFromDB(e.target.dataset.id);
             }
         })
     }
